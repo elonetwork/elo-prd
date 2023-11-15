@@ -1,43 +1,16 @@
-variable "resource_group_name" {
-  type = string
-}
 
-variable "location" {
-  type = string
-}
-
-variable "nsr_in_web_sub_aks_name" {
-
-}
-
-variable "nsr_in_web_sub_aks_priority" {
-
-}
-
-variable "nsr_in_web_sub_aks_direction" {
-
-}
-
-variable "nsr_in_web_sub_aks_access" {
-
-}
-
-variable "nsr_in_web_sub_aks_protocol" {
-
-}
-
-variable "nsr_in_web_sub_aks_source_port_range" {
-
-}
-
-variable "nsr_in_web_sub_aks_destination_port_ranges" {
-  type = list(string)
-}
-
-variable "nsr_in_web_sub_aks_destination_address_prefix" {
-
-}
-
-variable "nsr_in_web_sub_aks_source_address_prefix" {
-
+variable "nsg_rules" {
+  type = map(object({
+    nsr_name                 = string
+    nsg_name                 = string
+    nsr_priority              = number
+    nsr_direction             = string
+    nsr_access                = string
+    nsr_protocol              = string 
+    nsr_source_port_range    = string
+    nsr_destination_port_range = string
+    nsr_destination_port_ranges = list(string)
+    nsr_source_address_prefix = string
+    nsr_destination_address_prefix = string
+  }))
 }
