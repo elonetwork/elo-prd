@@ -11,4 +11,7 @@ inputs = {
   vnet_prod_address_space = "10.102.0.0/16"
   sub_aks_prod_address_prefixes =  "10.102.0.0/18"
   sub_aks_prod_address_name =  "sub-aks-prod"
+
+  sub_appgatw_prod_address_prefixes =  "10.102.64.0/18"
+  sub_appgatw_prod_address_name =  "sub-appgatw-prod"
 }

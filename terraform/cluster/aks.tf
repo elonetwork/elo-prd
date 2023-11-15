@@ -12,7 +12,7 @@ resource "azuread_group_member" "example_member" {
 }
 
 resource "azurerm_private_dns_zone" "private-zone" {
-  name                = "elonetwork.private.${var.location}.azmk8s.io"
+  name                = "elonetworkzone.private.${var.location}.azmk8s.io"
   resource_group_name = var.resource_group_name
 }
 

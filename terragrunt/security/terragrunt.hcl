@@ -26,4 +26,6 @@ inputs = {
   nsr_in_web_sub_aks_destination_port_ranges = ["80", "443", "53"]
   nsr_in_web_sub_aks_source_address_prefix = "*"
   nsr_in_web_sub_aks_destination_address_prefix = "*"
+
+  nsr_in_web_sub_aks_name="nsr-in-web-sub-aks"
 }

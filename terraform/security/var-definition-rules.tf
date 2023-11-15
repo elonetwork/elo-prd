@@ -31,7 +31,7 @@ variable "nsr_in_web_sub_aks_source_port_range" {
 }
 
 variable "nsr_in_web_sub_aks_destination_port_ranges" {
-  
+  type = list(string)
 }
 
 variable "nsr_in_web_sub_aks_destination_address_prefix" {
