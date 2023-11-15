@@ -7,21 +7,16 @@ variable "vnet_prod_name" {
 variable "resource_group_name" {
   
 }
-
-variable "peer_hub_to_prod_name" {
-  
-}
-
-variable "peer_prod_to_hub_name" {
-  
+variable "location" {
+  description = "Location for the Virtual Network"
 }
 
 data "terraform_remote_state" "hub-infra" {
    backend = "azurerm"
     config = {
         key = "infrastructure/terraform.tfstate"
-        resource_group_name = "1-1284a985-playground-sandbox"
-        storage_account_name = "storageaccountguru3"
-        container_name = "hubcontainer"
+        resource_group_name = "1-47b00d92-playground-sandbox"
+        storage_account_name = "hubspokesacount"
+        container_name = "statecontainer"
     }
 }
