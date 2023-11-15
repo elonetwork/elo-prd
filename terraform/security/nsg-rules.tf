@@ -7,9 +7,8 @@ resource "azurerm_network_security_rule" "nsr_in_web_sub_aks" {
   protocol                    = var.nsr_in_web_sub_aks_protocol
   source_port_range           = var.nsr_in_web_sub_aks_source_port_range
   destination_port_ranges     = var.nsr_in_web_sub_aks_destination_port_ranges
-  source_address_prefix       =var.nsr_in_web_sub_aks_source_address_prefix
+  source_address_prefix       = var.nsr_in_web_sub_aks_source_address_prefix
   destination_address_prefix  = var.nsr_in_web_sub_aks_destination_address_prefix
   resource_group_name         = var.resource_group_name
   network_security_group_name = module.nsg_sub_aks_prod.nsg_name
 }
-

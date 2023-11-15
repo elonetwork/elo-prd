@@ -17,6 +17,7 @@ dependency "infrastructure" {
 inputs = {
   sub_aks_prod_id = dependency.infrastructure.outputs.sub_aks_prod_id
   sub_aks_prod_id = dependency.infrastructure.outputs.sub_aks_prod_id
+  nsr_in_web_sub_aks_name = "nsr_in_web_sub_aks"
   nsg_sub_aks_prod_name = "nsg_sub_aks_prod"
   nsr_in_web_sub_aks_priority = 111
   nsr_in_web_sub_aks_direction = "Inbound"
