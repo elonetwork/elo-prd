@@ -73,12 +73,16 @@ variable "cluster_network_profile_load_balancer_sku" {
   
 }
 
+variable "appgateway_id" {
+  
+}
+
 
 data "terraform_remote_state" "hub-infra" {
    backend = "azurerm"
     config = {
         key = "infrastructure/terraform.tfstate"
-        resource_group_name = "1-41de7353-playground-sandbox"
+        resource_group_name = "1-d92c8c99-playground-sandbox"
         storage_account_name = "vsstorage4terraform"
         container_name = "hubcontainer"
     }

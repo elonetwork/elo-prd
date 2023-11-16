@@ -67,6 +67,10 @@ resource "azurerm_kubernetes_cluster" "aks-prd" {
     load_balancer_sku = var.cluster_network_profile_load_balancer_sku
   }
 
+  # ingress_application_gateway {
+  #   gateway_id = var.appgateway_id
+  # }
+
   tags = {
     Environment = var.cluster_tag
   }

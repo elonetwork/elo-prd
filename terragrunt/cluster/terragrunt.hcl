@@ -7,17 +7,20 @@ terraform {
 }
 
 dependencies{
-  paths = ["../infrastructure"]
+  paths = ["../infrastructure", "../appgateway"]
 }
 
 dependency "infrastructure" {
   config_path  = "../infrastructure"
 }
-
+dependency "appgateway" {
+  config_path  = "../appgateway"
+}
 
 inputs = {
   vnet_prod_id = dependency.infrastructure.outputs.vnet_prod_id
   sub_aks_prod_id = dependency.infrastructure.outputs.sub_aks_prod_id
+  appgateway_id = dependency.appgateway.outputs.appgateway_id
   azuread_grp_name = "grp-aks"
   private_link_dns_hub_name = "privatelink-vnet-link-hub"
   private_link_dns_prd_name = "privatelink-vnet-link-prd"
