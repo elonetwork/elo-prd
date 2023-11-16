@@ -6,7 +6,7 @@ generate "provider" {
  }
 provider "azurerm" {
   skip_provider_registration = "true"
-    features {}
+    features {}    
  }
  EOF
 }
@@ -19,7 +19,7 @@ generate "backend" {
 terraform {
   backend "azurerm" {
         key = "${path_relative_to_include()}/terraform.tfstate"
-        resource_group_name = "1-3203d254-playground-sandbox"
+        resource_group_name = "1-0d3e2a3e-playground-sandbox"
         storage_account_name = "tfstatstorag"
         container_name = "tfstate-prd"
   }
@@ -31,12 +31,12 @@ remote_state {
     backend = "azurerm"
     config = {
         key = "${path_relative_to_include()}/terraform.tfstate"
-        resource_group_name = "1-3203d254-playground-sandbox"
+        resource_group_name = "1-0d3e2a3e-playground-sandbox"
         storage_account_name = "tfstatstorag"
         container_name = "tfstate-prd"
     }
 }
 inputs= {
      location = "eastus"
-     resource_group_name = "1-3203d254-playground-sandbox"
+     resource_group_name = "1-0d3e2a3e-playground-sandbox"
 }

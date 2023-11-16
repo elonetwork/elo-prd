@@ -1,16 +1,42 @@
+data "azurerm_client_config" "current" {}
 data "terraform_remote_state" "vnet-hub" {
    backend = "azurerm"
     config = {
         key = "Infrastructure/terraform.tfstate"
-        resource_group_name = "1-3203d254-playground-sandbox"
+        resource_group_name = "1-0d3e2a3e-playground-sandbox"
         storage_account_name = "tfstatstorag"
         container_name = "tfstate"
     }
 }
 
-data "azuread_client_config" "current" {}
+resource "azurerm_key_vault" "example" {
+  name                        = var.key_vault_name
+  location                    = var.location
+  resource_group_name         = var.resource_group_name
+  enabled_for_disk_encryption = var.key_vault_enabled_for_disk_encryption
+  tenant_id                   = data.azurerm_client_config.current.tenant_id
+  soft_delete_retention_days  = var.key_vault_soft_delete_retention_days
+  purge_protection_enabled    = var.key_vault_purge_protection_enabled
+  sku_name = var.key_vault_sku_name
 
-resource "azuread_group" "example" {
+  access_policy {
+    tenant_id = data.azurerm_client_config.current.tenant_id
+    object_id = data.azurerm_client_config.current.object_id
+
+    key_permissions = var.key_vault_access_policy_key_permissions
+    secret_permissions = var.key_vault_access_policy_secret_permissions
+    storage_permissions = var.key_vault_access_policy_storage_permissions
+  }
+}
+resource "azurerm_container_registry" "acr" {
+  name                = var.acr_name
+  resource_group_name = var.resource_group_name
+  location            = var.location
+  sku                 = var.acr_sku
+}
+
+
+/* resource "azuread_group" "example" {
   display_name     = "grp-aks"
   owners           = [data.azuread_client_config.current.object_id]
   security_enabled = true
@@ -19,7 +45,7 @@ resource "azuread_group" "example" {
 resource "azuread_group_member" "example_member" {
   group_object_id  = azuread_group.example.id
   member_object_id = data.azuread_client_config.current.object_id
-}
+} */
 
 resource "azurerm_private_dns_zone" "private-zone" {
   name                = "dnselo.private.eastus.azmk8s.io"

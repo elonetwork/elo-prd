@@ -2,7 +2,7 @@ data "terraform_remote_state" "vnet-hub" {
    backend = "azurerm"
     config = {
         key = "Infrastructure/terraform.tfstate"
-        resource_group_name = "1-3203d254-playground-sandbox"
+        resource_group_name = "1-0d3e2a3e-playground-sandbox"
         storage_account_name = "tfstatstorag"
         container_name = "tfstate"
     }

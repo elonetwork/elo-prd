@@ -64,3 +64,10 @@ variable "name-nsg-https-allow-inbound-aks-prd" {
 variable "access-deny" {
   type = string
 } 
+variable "name-nsg-https-allow-inbound-appgtw-prd" {
+  
+}
+
+variable "name-nsg-https-allow-outbound-appgtw-prd" {
+  
+}
