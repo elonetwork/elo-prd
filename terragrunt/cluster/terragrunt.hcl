@@ -14,10 +14,11 @@ dependency "infrastructure" {
   config_path  = "../infrastructure"
 }
 
-
 inputs = {
   vnet_prod_id = dependency.infrastructure.outputs.vnet_prod_id
   sub_aks_prod_id = dependency.infrastructure.outputs.sub_aks_prod_id
+  acr_id = dependency.infrastructure.outputs.acr_id
+  gateway_id = dependency.infrastructure.outputs.gateway_id
   azuread_grp_name = "grp-aks"
   private_link_dns_hub_name = "privatelink-vnet-link-hub"
   private_link_dns_prd_name = "privatelink-vnet-link-prd"
@@ -31,5 +32,6 @@ inputs = {
   cluster_network_profile_network_plugin = "azure"
   cluster_network_profile_network_policy = "azure"
   cluster_network_profile_load_balancer_sku = "standard"
+
 
 }

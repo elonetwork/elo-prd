@@ -1,13 +1,12 @@
 locals {
-  backend_address_pool_name      = "test-beap"
-  frontend_port_name             = "test-feport"
-  frontend_ip_configuration_name = "test-feip"
-  http_setting_name              = "test-be-htst"
-  listener_name                  = "test-httplstn"
-  request_routing_rule_name      = "test-rqrt"
-  redirect_configuration_name    = "test-rdrcfg"
+  backend_address_pool_name      = "${ module.vnet_prod.name}-beap"
+  frontend_port_name             = "${ module.vnet_prod.name}-feport"
+  frontend_ip_configuration_name = "${ module.vnet_prod.name}-feip"
+  http_setting_name              = "${ module.vnet_prod.name}-be-htst"
+  listener_name                  = "${ module.vnet_prod.name}-httplstn"
+  request_routing_rule_name      = "${ module.vnet_prod.name}-rqrt"
+  redirect_configuration_name    = "${ module.vnet_prod.name}-rdrcfg"
 }
-
 resource "azurerm_public_ip" "example" {
   name                = "example-pip"
   resource_group_name = var.resource_group_name
@@ -42,7 +41,7 @@ resource "azurerm_web_application_firewall_policy" "example" {
   }
 }
 
-resource "azurerm_application_gateway" "network" {
+resource "azurerm_application_gateway" "appgtw" {
   depends_on                        = [azurerm_web_application_firewall_policy.example]
   name                              = var.application_gateway_name
   resource_group_name               = var.resource_group_name
@@ -51,25 +50,25 @@ resource "azurerm_application_gateway" "network" {
   force_firewall_policy_association = true
 
   sku {
-    name     = "WAF_v2"
-    tier     = "WAF_v2"
-    capacity = 2
+    name     = var.application_gateway_sku_name
+    tier     = var.application_gateway_sku_tier
+    capacity = var.application_gateway_sku_capacity
   }
 
   waf_configuration {
-    enabled          = true
-    firewall_mode    = "Detection"
-    rule_set_version = "3.2"
+    enabled          = var.application_gateway_waf_configuration_enabled
+    firewall_mode    = var.application_gateway_waf_configuration_firewall_mode
+    rule_set_version = var.application_gateway_waf_configuration_rule_set_version
   }
 
   gateway_ip_configuration {
-    name      = "my-gateway-ip-configuration"
-    subnet_id = var.sub_appgtw_prd_id
+    name      = var.application_gateway_ip_configuration_name
+    subnet_id = module.sub-appgtw-prd.id
   }
 
   frontend_port {
     name = local.frontend_port_name
-    port = 80
+    port = var.application_gateway_frontend_port_port
   }
 
   frontend_ip_configuration {

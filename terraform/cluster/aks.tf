@@ -60,6 +60,10 @@ resource "azurerm_kubernetes_cluster" "aks-prd" {
     client_id     = var.client_id
     client_secret = var.client_secret
   }
+  
+  ingress_application_gateway {
+    gateway_id = var.gateway_id
+  }
 
   network_profile {
     network_plugin    = var.cluster_network_profile_network_plugin
@@ -72,4 +76,8 @@ resource "azurerm_kubernetes_cluster" "aks-prd" {
   }
 }
 
-
+# resource "azurerm_role_assignment" "example" {
+#   principal_id                     = azuread_group.example.id
+#   role_definition_name             = "AcrPull"
+#   scope                            = var.acr_id
+# }

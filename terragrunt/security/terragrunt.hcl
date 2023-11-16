@@ -16,7 +16,7 @@ dependency "infrastructure" {
 
 inputs = {
   sub_aks_prod_id = dependency.infrastructure.outputs.sub_aks_prod_id
-  sub_aks_prod_id = dependency.infrastructure.outputs.sub_aks_prod_id
+  nsg_sub_aks_prod_name = dependency.infrastructure.outputs.nsg_sub_aks_prod_name
 
   nsg_rules  = {
     nsr_in_web_sub_aks = {

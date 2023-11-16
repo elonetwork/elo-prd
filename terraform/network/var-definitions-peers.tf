@@ -18,8 +18,8 @@ variable "peer_prod_to_hub_name" {
 data "terraform_remote_state" "hub-infra" {
    backend = "azurerm"
     config = {
-        key = "infrastructure/terraform.tfstate"
-        resource_group_name = "1-5df99f9d-playground-sandbox"
+        key = "hub/infrastructure/terraform.tfstate"
+        resource_group_name = "1-aedb1b32-playground-sandbox"
         storage_account_name = "storageaccountguru2"
         container_name = "hubcontainer"
     }
