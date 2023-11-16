@@ -56,6 +56,8 @@ variable "cluster_network_profile_network_policy" {
 
 variable "cluster_network_profile_load_balancer_sku" {
 }
+variable "acr_id" {
+}
 
 data "terraform_remote_state" "hub-infra" {
    backend = "azurerm"

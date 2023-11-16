@@ -18,7 +18,14 @@ inputs = {
   sub_aks_prod_id = dependency.infrastructure.outputs.sub_aks_prod_id
   sub_aks_prod_id = dependency.infrastructure.outputs.sub_aks_prod_id
   nsg_sub_aks_prod_name = "nsg_sub_aks_prod"
-
+  key_vault_name = "keyvaulteloAM"
+  key_vault_soft_delete_retention_days = 7
+  key_vault_purge_protection_enabled = false
+  key_vault_sku_name = "standard"
+  key_vault_enabled_for_disk_encryption = true
+  key_vault_access_policy_key_permissions = ["Get"]
+  key_vault_access_policy_secret_permissions = ["Get"]
+  key_vault_access_policy_storage_permissions = ["Get"]
   nsg_rules  = {
     nsr_in_web_sub_aks = {
         "nsr_name": "nsr_in_web_sub_aks",

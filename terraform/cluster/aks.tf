@@ -72,4 +72,12 @@ resource "azurerm_kubernetes_cluster" "aks-prd" {
   }
 }
 
+# resource "azurerm_role_assignment" "example" {
+#   principal_id                     =  var.client_id
+#   role_definition_name             = "AcrPull"
+#   scope                            = var.acr_id
+#   skip_service_principal_aad_check = true
+# }
+
+
 

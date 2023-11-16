@@ -31,5 +31,6 @@ inputs = {
   cluster_network_profile_network_plugin = "azure"
   cluster_network_profile_network_policy = "azure"
   cluster_network_profile_load_balancer_sku = "standard"
+  acr_id = dependency.infrastructure.outputs.acr_id
 
 }
