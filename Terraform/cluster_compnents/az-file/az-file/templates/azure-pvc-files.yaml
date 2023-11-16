@@ -1,22 +1,15 @@
-kind: Pod
 apiVersion: v1
+kind: Pod
 metadata:
-  name: mypod
+  name: my-pod
 spec:
   containers:
-    - name: mypod
-      image: mcr.microsoft.com/oss/nginx/nginx:1.15.5-alpine
-      resources:
-        requests:
-          cpu: 100m
-          memory: 128Mi
-        limits:
-          cpu: 250m
-          memory: 256Mi
+    - name: my-container
+      image: nginx:latest
       volumeMounts:
-        - mountPath: /mnt/azure
-          name: volume
+        - name: azure-files
+          mountPath: /data
   volumes:
-   - name: volume
-     persistentVolumeClaim:
-       claimName: my-azurefile
+    - name: azure-files
+      persistentVolumeClaim:
+        claimName: azure-pvc-files
