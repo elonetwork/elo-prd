@@ -16,9 +16,8 @@ dependency "infrastructure" {
 
 inputs = {
   sub_aks_prod_id = dependency.infrastructure.outputs.sub_aks_prod_id
-  sub_appgtw_prod_id = dependency.infrastructure.outputs.sub_appgtw_prod_id
   vnet_prod_id = dependency.infrastructure.outputs.vnet_prod_id
   vnet_prod_name = dependency.infrastructure.outputs.vnet_prod_name
-  application_gateway_name ="appgtwprd"
-
+  peer_hub_to_prod_name = "peer_hub_to_prod"
+  peer_prod_to_hub_name = "peer_prod_to_hub"
 }
