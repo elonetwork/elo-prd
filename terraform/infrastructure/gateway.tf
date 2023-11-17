@@ -94,6 +94,7 @@ resource "azurerm_application_gateway" "appgtw" {
     frontend_ip_configuration_name = local.frontend_ip_configuration_name
     frontend_port_name             = local.frontend_port_name
     protocol                       = "Http"
+    
   }
 
   request_routing_rule {
@@ -104,4 +105,6 @@ resource "azurerm_application_gateway" "appgtw" {
     backend_address_pool_name  = local.backend_address_pool_name
     backend_http_settings_name = local.http_setting_name
   }
+
+  
 }
