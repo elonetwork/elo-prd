@@ -17,7 +17,7 @@ remote_state {
     if_exists = "overwrite"
   }
   config = {
-    resource_group_name  = "1-d92c8c99-playground-sandbox"
+    resource_group_name  = "1-1f1a8d09-playground-sandbox"
     storage_account_name = "vsstorage4terraform"
     container_name       = "hubcontainer"
     key                  = "${path_relative_to_include()}/prod/terraform.tfstate"
@@ -26,8 +26,8 @@ remote_state {
 
 inputs = {
   location = "southcentralus"
-  resource_group_name = "1-d92c8c99-playground-sandbox"
+  resource_group_name = "1-1f1a8d09-playground-sandbox"
   ssh_public_key = file("C:/Users/LENOVO/.ssh/id_rsa.pub")
-  client_id = "ba4605fa-e7ad-430f-8d6d-602995755763"
-  client_secret = "eaQ8Q~THdYH72UrMUhiMBDlHdcrWH~8Ub1zL8cmv"
+  client_id = "6e38b96c-744a-4f6a-8c9d-d1be4eeba48d"
+  client_secret = "5OQ8Q~KKagDaAV-FyC8tUF3SsvCQMTaCk1PIbbWr"
 }
