@@ -1,19 +1,17 @@
 apiVersion: storage.k8s.io/v1
 kind: StorageClass
 metadata:
-  name: azure-files-sc
-provisioner: files.csi.azure.com
+  name: azure-file-sc
+provisioner: file.csi.azure.com
 reclaimPolicy: Delete
 volumeBindingMode: Immediate
 allowVolumeExpansion: true
 mountOptions:
-  - dir_mode=0640
-  - file_mode=0640
-  - uid=0
-  - gid=0
   - mfsymlinks
-  - cache=strict
   - nosharesock
+  - actimeo=30
 parameters:
   skuName: Standard_LRS
   location: eastus
+  resourceGroup: 1-9983e5c6-playground-sandbox
+  storageAccount: tfstatstorag
