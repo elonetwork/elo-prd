@@ -1,0 +1,3 @@
+# aks test
+aks-ingress:
+  name: "jenkins-ingress"
