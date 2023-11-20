@@ -8,7 +8,7 @@ locals {
   redirect_configuration_name    = "${ module.vnet_prod.name}-rdrcfg"
 }
 resource "azurerm_public_ip" "example" {
-  name                = "example-pip"
+  name                = "app-gateway-public-ip"
   resource_group_name = var.resource_group_name
   location            = var.location
   allocation_method   = "Static"
