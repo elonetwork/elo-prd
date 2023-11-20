@@ -13,5 +13,5 @@ mountOptions:
 parameters:
   skuName: Standard_LRS
   location: eastus
-  resourceGroup: 1-9983e5c6-playground-sandbox
+  resourceGroup: 1-38f2be4d-playground-sandbox
   storageAccount: tfstatstorag
