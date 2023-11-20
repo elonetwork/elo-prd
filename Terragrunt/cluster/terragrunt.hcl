@@ -17,8 +17,8 @@ dependency "subnet-aks" {
 
 
 inputs = {
-  client_id="8a5cf1b9-30ab-4024-9e68-b36eb0efc20c"
-  client_secret="Dkt8Q~EEw_JFmrm3IPY6sSF6OudhAYfZY-UktbO7"
+  client_id="ffb45d71-fd1d-4c74-8434-21de23ef2aaf"
+  client_secret="tuQ8Q~qLY7S0VNyGv-xyJqidjL6tbU_wLtr~saB1"
   name-appgtw="nsg-appgtw-prd"
   vnet_subnet_aks_id=dependency.subnet-aks.outputs.subnet-aks-id
   aks-cluster-name="aks_cluster"
@@ -31,7 +31,7 @@ inputs = {
    acr_name  = "elocontainerregistryv11"
   acr_sku = "Standard"
   acr_admin_enabled = false
-  key_vault_name = "elonetworkkeyvaultv11"
+  key_vault_name = "elonetworkkeyvaul2211"
   key_vault_soft_delete_retention_days = 7
   key_vault_purge_protection_enabled = false
   key_vault_sku_name = "standard"

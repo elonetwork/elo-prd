@@ -1,5 +1,4 @@
-/* resource "azurerm_storage_share" "aks-fshare" {
-  name                 = var.name-az-file
-  storage_account_name = var.storage_account_name
-  quota                = var.quota-az-file
-} */
+resource "helm_release" "example" {
+  name       = "my-release"
+  chart      = "/home/adminuser/elo-prd/Terraform/cluster_compnents/az-file/az-file"
+}

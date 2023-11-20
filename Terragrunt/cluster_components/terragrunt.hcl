@@ -1,4 +1,4 @@
-/* include "root" {
+include "root" {
   path = find_in_parent_folders("terragrunt.hcl")
 }
 
@@ -11,4 +11,3 @@ inputs={
   storage_account_name="tfstatstorag"
   quota-az-file=5
 }
- */
