@@ -1,4 +1,4 @@
 # aks test
 aksIngress:
   metadata:
-    name: "jenkinsIngress"
+    name: "jenkins-ingress"
