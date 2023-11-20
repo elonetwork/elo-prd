@@ -10,7 +10,10 @@ provider "kubernetes" {
 }
 
 resource "helm_release" "example" {
-  name       = "my-local-chart"
-#   chart      = "./charts/example"
-chart      = "/home/testadmin/example/jenkins"
+  name = "my-local-chart"
+  #   chart      = "./charts/example"
+  chart = "/home/testadmin/example/jenkins"
+  values = [
+    "${file("jenkins-values.tpl.yaml")}"
+  ]
 }

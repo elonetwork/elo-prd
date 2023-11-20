@@ -1,3 +1,3 @@
-variable "kube_config"{
-    default ="~/.kube/config"
+variable "kube_config" {
+  default = "~/.kube/config"
 }
