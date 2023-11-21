@@ -7,7 +7,7 @@ terraform {
 }
 
 inputs = {
-  key_vault_name = "elonetworkkeyvaulttest"
+  key_vault_name = "elonetworkkeyvaulttest2"
   key_vault_soft_delete_retention_days = 7
   key_vault_purge_protection_enabled = false
   key_vault_sku_name = "standard"

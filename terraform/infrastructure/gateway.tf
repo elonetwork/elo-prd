@@ -1,11 +1,11 @@
 locals {
-  backend_address_pool_name      = "${ module.vnet_prod.name}-beap"
-  frontend_port_name             = "${ module.vnet_prod.name}-feport"
-  frontend_ip_configuration_name = "${ module.vnet_prod.name}-feip"
-  http_setting_name              = "${ module.vnet_prod.name}-be-htst"
-  listener_name                  = "${ module.vnet_prod.name}-httplstn"
-  request_routing_rule_name      = "${ module.vnet_prod.name}-rqrt"
-  redirect_configuration_name    = "${ module.vnet_prod.name}-rdrcfg"
+  backend_address_pool_name      = "${module.vnet_prod.name}-beap"
+  frontend_port_name             = "${module.vnet_prod.name}-feport"
+  frontend_ip_configuration_name = "${module.vnet_prod.name}-feip"
+  http_setting_name              = "${module.vnet_prod.name}-be-htst"
+  listener_name                  = "${module.vnet_prod.name}-httplstn"
+  request_routing_rule_name      = "${module.vnet_prod.name}-rqrt"
+  redirect_configuration_name    = "${module.vnet_prod.name}-rdrcfg"
 }
 resource "azurerm_public_ip" "example" {
   name                = "app-gateway-public-ip"
@@ -94,7 +94,7 @@ resource "azurerm_application_gateway" "appgtw" {
     frontend_ip_configuration_name = local.frontend_ip_configuration_name
     frontend_port_name             = local.frontend_port_name
     protocol                       = "Http"
-    
+
   }
 
   request_routing_rule {
@@ -106,5 +106,4 @@ resource "azurerm_application_gateway" "appgtw" {
     backend_http_settings_name = local.http_setting_name
   }
 
-  
 }
