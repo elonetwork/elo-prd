@@ -13,7 +13,7 @@ resource "helm_release" "example" {
   name = "my-local-chart"
   #   chart      = "./charts/example"
   # chart = "/home/testadmin/example/jenkins"
-  chart = "~/elo-helm/jenkins"
+  chart = "/home/testadmin/elo-helm/jenkins"
   values = [
     "${file("jenkins-values.tpl.yaml")}"
   ]
