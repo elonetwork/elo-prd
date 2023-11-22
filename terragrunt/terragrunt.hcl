@@ -16,7 +16,7 @@ remote_state {
     if_exists = "overwrite"
   }
   config = {
-    resource_group_name  = "1-80636d78-playground-sandbox"
+    resource_group_name  = "1-6714340f-playground-sandbox"
     storage_account_name = "storageaccountguru2"
     container_name       = "hubcontainer"
     key                  = "prod/${path_relative_to_include()}/terraform.tfstate"
@@ -24,8 +24,8 @@ remote_state {
 }
 
 inputs = {
-  location = "eastus"
-  resource_group_name = "1-80636d78-playground-sandbox"
-  client_id = "10f5de26-7ece-45d9-916b-ceae438dda18"
-  client_secret = "gAS8Q~9o8zXiJzNXc.LmU5oPGGOGiIFQDJWBXbmq"
+  location = "westus"
+  resource_group_name = "1-6714340f-playground-sandbox"
+  client_id = "60d49c27-1fc1-4ad9-b9a7-380e63b19605"
+  client_secret = "ow18Q~4zgNFUZj1izRenWhQ3L96cBsGuGti4xbEG"
 }
