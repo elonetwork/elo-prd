@@ -4,7 +4,16 @@ resource "helm_release" "yaml_file_1" {
   version = "1"
 
   cleanup_on_fail = true
-#   values          = [templatefile("${path.module}/jenkins.values.yml.tpl",{})]
+
+  values = [templatefile("${path.module}/jenkins.values.yml.tpl", {
+    rg = var.resource_group_name
+    location = var.location
+  })]
 
 }
 
+variable "resource_group_name" {
+}
+
+variable "location" {
+}
