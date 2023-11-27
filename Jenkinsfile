@@ -5,6 +5,10 @@ pipeline {
             yaml '''
             apiVersion: v1
             kind: Pod
+            metadata:
+                labels:
+                    some-label: some-label-value
+                name: my-custom-label-7jkcx-tq8km
             spec:
               containers:
               - name: jnlp
