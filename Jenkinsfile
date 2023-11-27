@@ -1,25 +1,24 @@
 pipeline {
-    agent any
+    agent {
+        docker {
+            image 'gcr.io/kaniko-project/executor:latest'
+            args '--privileged'
+        }
+    }
+
+    environment {
+        IMAGE_NAME = 'elonetworkcontainerregistry.azurecr.io/hello-world-example'
+        IMAGE_TAG = 'latest'
+    }
 
     stages {
         stage('Build and Push Docker Image') {
             steps {
                 script {
-                    // Define the image name and tag
-                    def imageName = "elonetworkcontainerregistry.azurecr.io/hello-world-example"
-                    def imageTag = "latest"
-
-                    // Build the Docker image
-                    docker.build(imageName + ":" + imageTag, '.')
-
-                    // Log in to Azure Container Registry
-                    withDockerRegistry(credentialsId: 'your_acr_credentials_id', url: 'https://elonetworkcontainerregistry.azurecr.io') {
-                        // Push the Docker image to ACR
-                        docker.image(imageName + ":" + imageTag).push()
-                    }
+                    // Your Kaniko build command here
+                    sh "kaniko --context . --dockerfile Dockerfile --destination ${IMAGE_NAME}:${IMAGE_TAG}"
                 }
             }
         }
     }
 }
-
