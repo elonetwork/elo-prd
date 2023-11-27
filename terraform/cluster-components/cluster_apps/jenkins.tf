@@ -9,11 +9,5 @@ resource "helm_release" "yaml_file_1" {
     rg = var.resource_group_name
     location = var.location
   })]
-
 }
 
-variable "resource_group_name" {
-}
-
-variable "location" {
-}
