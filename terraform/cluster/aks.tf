@@ -76,6 +76,16 @@ resource "azurerm_kubernetes_cluster" "aks-prd" {
   }
 }
 
+output "aks_kube_config" {
+  value = azurerm_kubernetes_cluster.aks-prd.kube_config_raw
+  sensitive = true
+}
+
+output "client_certificate" {
+  value     = azurerm_kubernetes_cluster.aks-prd.kube_config.0.client_certificate
+  sensitive = true
+}
+
 # resource "azurerm_role_assignment" "example" {
 #   principal_id                     = azuread_group.example.id
 #   role_definition_name             = "AcrPull"
