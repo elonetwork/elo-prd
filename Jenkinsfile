@@ -23,7 +23,7 @@ pipeline {
               volumes:
               - name: docker-sock
                 hostPath:
-                  path: /var/run/docker.sock
+                  path: /var/jenkins_home/docker.sock
             '''
         }
     }
