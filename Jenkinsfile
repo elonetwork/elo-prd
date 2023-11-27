@@ -1,7 +1,7 @@
 pipeline {
     agent {
         docker {
-            image 'gcr.io/kaniko-project/executor:latest'
+            image 'docker:dind'
             args '--privileged'
         }
     }
@@ -15,8 +15,14 @@ pipeline {
         stage('Build and Push Docker Image') {
             steps {
                 script {
-                    // Your Kaniko build command here
-                    sh "kaniko --context . --dockerfile Dockerfile --destination ${IMAGE_NAME}:${IMAGE_TAG}"
+                    // Build the Docker image
+                    sh "docker build -t ${IMAGE_NAME}:${IMAGE_TAG} ."
+
+                    // Log in to Azure Container Registry
+                    withDockerRegistry(credentialsId: 'your_acr_credentials_id', url: 'https://elonetworkcontainerregistry.azurecr.io') {
+                        // Push the Docker image to ACR
+                        sh "docker push ${IMAGE_NAME}:${IMAGE_TAG}"
+                    }
                 }
             }
         }
