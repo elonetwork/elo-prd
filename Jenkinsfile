@@ -1,22 +1,26 @@
 pipeline {
     agent {
         kubernetes {
-            label 'my-custom-label'
-            defaultContainer 'jnlp-docker'
-            yaml """
+            label 'docker-agent'
+            yaml '''
             apiVersion: v1
             kind: Pod
-            metadata:
-              labels:
-                some-label: some-label-value
             spec:
               containers:
-              - name: jnlp-docker
-                image: jenkins/jnlp-agent:latest
-                command:
-                - cat
-                tty: true
-            """
+              - name: jnlp
+                image: jenkins/inbound-agent:latest
+                command: ["/bin/bash"]
+                args: ["-s"]
+              - name: docker
+                image: docker:latest
+                volumeMounts:
+                - name: docker-sock
+                  mountPath: /var/run/docker.sock
+              volumes:
+              - name: docker-sock
+                hostPath:
+                  path: /var/run/docker.sock
+            '''
         }
     }
 
