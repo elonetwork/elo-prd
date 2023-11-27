@@ -11,8 +11,8 @@ pipeline {
                     // Install Docker if not installed
                     if (!dockerInstalled) {
                         echo 'Docker is not installed. Installing Docker...'
-                        sh 'sudo apt-get update'
-                        sh 'sudo apt-get install -y docker.io'
+                        sh 'apt-get update'
+                        sh 'apt-get install -y docker.io'
                     } else {
                         echo 'Docker is already installed.'
                     }
