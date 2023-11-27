@@ -1,25 +1,26 @@
 pipeline {
-    agent any
+    agent {
+        kubernetes {
+            label 'my-custom-label'
+            defaultContainer 'jnlp-docker'
+            yaml """
+            apiVersion: v1
+            kind: Pod
+            metadata:
+              labels:
+                some-label: some-label-value
+            spec:
+              containers:
+              - name: jnlp-docker
+                image: jenkins/jnlp-agent:latest
+                command:
+                - cat
+                tty: true
+            """
+        }
+    }
 
     stages {
-        stage('Install Docker') {
-            steps {
-                script {
-                    // Check if Docker is installed
-                    def dockerInstalled = sh(script: 'command -v docker', returnStatus: true) == 0
-
-                    // Install Docker if not installed
-                    if (!dockerInstalled) {
-                        echo 'Docker is not installed. Installing Docker...'
-                        sh 'apt-get update'
-                        sh 'apt-get install -y docker.io'
-                    } else {
-                        echo 'Docker is already installed.'
-                    }
-                }
-            }
-        }
-
         stage('Build and Push Docker Image') {
             steps {
                 script {
@@ -28,16 +29,15 @@ pipeline {
                     def imageTag = "latest"
 
                     // Build the Docker image
-                    docker.build(imageName + ":" + imageTag, '.')
+                    sh "docker build -t ${imageName}:${imageTag} ."
 
                     // Log in to Azure Container Registry
                     withDockerRegistry(credentialsId: 'your_acr_credentials_id', url: 'https://elonetworkcontainerregistry.azurecr.io') {
                         // Push the Docker image to ACR
-                        docker.image(imageName + ":" + imageTag).push()
+                        sh "docker push ${imageName}:${imageTag}"
                     }
                 }
             }
         }
     }
 }
-
