@@ -20,7 +20,7 @@ spec:
       mountPath: /kaniko/.docker
   - name: busybox-container
     image: busybox:latest
-    command: ['sh', '-c', 'echo "Hello from BusyBox"']
+    command: ['sh', '-c', 'tail -f /dev/null']
   restartPolicy: Never
   volumes:
   - name: kaniko-secret
