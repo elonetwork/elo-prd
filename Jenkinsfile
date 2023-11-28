@@ -1,10 +1,10 @@
 pipeline {
     agent any 
+
     stages {
-        stage('Build and Push Docker Image') {
+        stage(' Push Docker Image') {
             steps {
                   kubernetes {
-            // Define the Kubernetes YAML configuration inline
             defaultContainer 'busybox-container'
             yaml """
 apiVersion: v1
