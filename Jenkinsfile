@@ -1,5 +1,8 @@
 pipeline {
-    agent {
+    agent any
+
+    stage('Build') {
+      agent {
         kubernetes {
             // Define the Kubernetes YAML configuration inline
             defaultContainer 'kaniko-demo'
@@ -32,14 +35,11 @@ spec:
 """
         }
     }
-    
-    stages {
-        stage('Build and Push Docker Image') {
-            steps {
-                script {
-                    sh "ls "
-                }
-            }
-        }
-    }
+steps {
+      script {
+        sh "pwd"
+    } //container
+  } //steps
+} /
+   
 }
