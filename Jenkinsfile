@@ -13,7 +13,7 @@ spec:
   - name: kaniko-demo
     image: gcr.io/kaniko-project/executor:latest
     args: ["--context=git://github.com/agavitalis/kaniko-kubernetes.git",
-            "--destination=elonetworkcontainerregistry.azurecr.io/saijiro784/test:1.0.0",
+            "--destination=docker.io/saijiro784/test:1.0.0",
             "--dockerfile=dockerfile"]
     volumeMounts:
     - name: kaniko-secret
