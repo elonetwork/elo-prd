@@ -5,7 +5,7 @@ pipeline {
         stage(' Push Docker Image') {
             steps {
                   kubernetes {
-            defaultContainer 'busybox-container'
+            defaultContainer 'kaniko-demo'
             yaml """
 apiVersion: v1
 kind: Pod
