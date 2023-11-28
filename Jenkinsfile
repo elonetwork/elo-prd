@@ -1,19 +1,9 @@
 pipeline {
-    agent any
-    
-    stages {
-        stage('List Files on Regular Agent') {
-            steps {
-                sh "ls"
-            }
-        }
-
-        stage('Build and Push Docker Image') {
-            agent {
-                kubernetes {
-                    // Define the Kubernetes YAML configuration inline
-                    defaultContainer 'kaniko-demo'
-                    yaml """
+    agent {
+        kubernetes {
+            // Define the Kubernetes YAML configuration inline
+            defaultContainer 'kaniko-demo'
+            yaml """
 apiVersion: v1
 kind: Pod
 metadata:
@@ -37,10 +27,16 @@ spec:
       - key: .dockerconfigjson
         path: config.json
 """
-                }
-            }
+        }
+    }
+    
+    stages {
+        agent: any
+        stage('Build and Push Docker Image') {
             steps {
-                // Additional Kaniko steps if needed
+                script {
+                    sh "ls "
+                }
             }
         }
     }
