@@ -20,7 +20,12 @@ spec:
       mountPath: /kaniko/.docker
   - name: busybox-container
     image: busybox:latest
-    command: ['sh', '-c', 'echo "Hello from BusyBox"']
+    command:
+      - "/bin/sh"
+      - "-c"
+      - "tail -f /dev/null"
+    tty: true
+    stdin: true
   restartPolicy: Never
   volumes:
   - name: kaniko-secret
@@ -33,15 +38,22 @@ spec:
         }
     }
     
-    stages {
+      stages {
     stage('Build with Kaniko') {
       environment {
         PATH = "/busybox:/kaniko:$PATH"
       }
       steps {
         container(name: 'busybox-container', shell: '/busybox/sh') {
+
+          writeFile file: "Dockerfile", text: """
+            FROM jenkins/agent
+            MAINTAINER CloudBees Support Team <support@cloudbees.com>
+            RUN mkdir /home/jenkins/.m2
+          """
+
           sh '''#!/busybox/sh
-          ls
+            /kaniko/executor --context `pwd` --verbosity debug --destination cloudbees/jnlp-from-kaniko:latest
           '''
         }
       }
