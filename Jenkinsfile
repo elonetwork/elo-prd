@@ -15,7 +15,7 @@ metadata:
 spec:
   containers:
   - name: kaniko-demo
-    image: gcr.io/kaniko-project/executor:latest
+    image: gcr.io/kaniko-project/executor:debug
     args: ["--context=git://github.com/agavitalis/kaniko-kubernetes.git",
             "--destination=docker.io/saijiro784/test:1.0.2",
             "--dockerfile=dockerfile"]
@@ -39,8 +39,8 @@ spec:
 steps {
       script {
         sh "pwd"
-    } //container
-  } //steps
+    } 
+  }
 } 
     }
    
