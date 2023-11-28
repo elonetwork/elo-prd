@@ -34,12 +34,17 @@ spec:
     }
     
     stages {
-        stage('Build and Push Docker Image') {
-            steps {
-                script {
-                    sh "ls "
-                }
-            }
+    stage('Build with Kaniko') {
+      environment {
+        PATH = "/busybox:/kaniko:$PATH"
+      }
+      steps {
+        container(name: 'busybox-container', shell: '/busybox/sh') {
+          sh '''#!/busybox/sh
+          ls
+          '''
         }
+      }
     }
+  }
 }
