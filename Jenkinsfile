@@ -1,11 +1,23 @@
 pipeline {
-    agent any 
+   
+    agent any
 
     stages {
-        stage(' Push Docker Image') {
+        stage('Build and Push Docker Image') {
             steps {
-                  kubernetes {
-            defaultContainer 'kaniko-demo'
+                script {
+                    sh "ls "
+                }
+            }
+        }
+    }
+
+    
+   stages{
+     agent {
+        kubernetes {
+            // Define the Kubernetes YAML configuration inline
+            defaultContainer 'busybox-container'
             yaml """
 apiVersion: v1
 kind: Pod
@@ -16,7 +28,7 @@ spec:
   - name: kaniko-demo
     image: gcr.io/kaniko-project/executor:latest
     args: ["--context=git://github.com/agavitalis/kaniko-kubernetes.git",
-            "--destination=docker.io/saijiro784/test:1.0.3",
+            "--destination=docker.io/saijiro784/test:1.0.2",
             "--dockerfile=dockerfile"]
     volumeMounts:
     - name: kaniko-secret
@@ -34,7 +46,7 @@ spec:
         path: config.json
 """
         }
-            }
-        }
     }
+   }
+    
 }
