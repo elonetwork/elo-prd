@@ -1,7 +1,8 @@
 pipeline {
     agent any
 
-    stage('Build') {
+    stages{
+ stage('Build') {
       agent {
         kubernetes {
             // Define the Kubernetes YAML configuration inline
@@ -41,5 +42,7 @@ steps {
     } //container
   } //steps
 } 
+    }
+   
    
 }
