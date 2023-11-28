@@ -6,19 +6,18 @@ pipeline {
         stage('Build and Push Docker Image') {
             steps {
                 script {
-                    sh "ls "
+                    sh "echo 'ooooooooooooooooo' "
                 }
             }
         }
     }
 
-    
-   stages{
-     agent {
-        kubernetes {
-            // Define the Kubernetes YAML configuration inline
-            defaultContainer 'busybox-container'
-            yaml """
+      post {
+        always {
+            kubernetes {
+                // Define the Kubernetes YAML configuration inline
+                defaultContainer 'busybox-container'
+                yaml """
 apiVersion: v1
 kind: Pod
 metadata:
@@ -36,7 +35,7 @@ spec:
   - name: busybox-container
     image: busybox:latest
     command: ['sh', '-c', 'tail -f /dev/null']
-  restartPolicy: Never
+    restartPolicy: Never
   volumes:
   - name: kaniko-secret
     secret:
@@ -45,8 +44,8 @@ spec:
       - key: .dockerconfigjson
         path: config.json
 """
+            }
         }
     }
-   }
     
 }
