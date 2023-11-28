@@ -4,9 +4,7 @@ pipeline {
     stages {
         stage('List Files on Regular Agent') {
             steps {
-                script {
-                    sh "ls"
-                }
+                sh "ls"
             }
         }
 
@@ -42,9 +40,7 @@ spec:
                 }
             }
             steps {
-                script {
-                    // Additional Kaniko steps if needed
-                }
+                // Additional Kaniko steps if needed
             }
         }
     }
