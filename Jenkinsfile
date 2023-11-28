@@ -1,9 +1,12 @@
 pipeline {
-    agent {
-        kubernetes {
-            // Define the Kubernetes YAML configuration inline
-            defaultContainer 'kaniko-demo'
-            yaml """
+    agent any
+
+    stages {
+        stage('Create Kubernetes Pod') {
+            steps {
+                script {
+                    // Define Kubernetes pod YAML
+                    def podTemplate =  """
 apiVersion: v1
 kind: Pod
 metadata:
@@ -35,28 +38,16 @@ spec:
       - key: .dockerconfigjson
         path: config.json
 """
-        }
-    }
-    
-      stages {
-    stage('Build with Kaniko') {
-      environment {
-        PATH = "/busybox:/kaniko:$PATH"
-      }
-      steps {
-        container(name: 'busybox-container', shell: '/busybox/sh') {
 
-          writeFile file: "Dockerfile", text: """
-            FROM jenkins/agent
-            MAINTAINER CloudBees Support Team <support@cloudbees.com>
-            RUN mkdir /home/jenkins/.m2
-          """
-
-          sh '''#!/busybox/sh
-            /kaniko/executor --context `pwd` --verbosity debug --destination cloudbees/jnlp-from-kaniko:latest
-          '''
+                    // Create the Kubernetes pod
+                    kubernetesDeploy(
+                        kubeconfigId: '652cf836-cff5-4822-8bbf-ebc5faa71fb4',
+                        configs: podTemplate
+                    )
+                }
+            }
         }
-      }
+
+        // Add more stages as needed
     }
-  }
 }
