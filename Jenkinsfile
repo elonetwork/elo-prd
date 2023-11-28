@@ -18,6 +18,7 @@ spec:
     image: gcr.io/kaniko-project/executor:debug
     command:
     - /busybox/cat
+    tty: true
     volumeMounts:
     - name: kaniko-secret
       mountPath: /kaniko/.docker
