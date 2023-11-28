@@ -8,13 +8,13 @@ clusters:
 contexts:
 - context:
     cluster: aks-prd
-    user: clusterUser_1-422fb5af-playground-sandbox_aks-prd
+    user: clusterUser_1-83012d32-playground-sandbox_aks-prd
   name: aks-prd
 current-context: aks-prd
 kind: Config
 preferences: {}
 users:
-- name: clusterUser_1-422fb5af-playground-sandbox_aks-prd
+- name: clusterUser_1-83012d32-playground-sandbox_aks-prd
   user:
     exec:
       apiVersion: client.authentication.k8s.io/v1beta1

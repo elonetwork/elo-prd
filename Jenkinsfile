@@ -1,32 +1,4 @@
 pipeline {
-    agent {
-        kubernetes {
-            label 'docker-agent'
-            yaml '''
-            apiVersion: v1
-            kind: Pod
-            metadata:
-                labels:
-                    some-label: some-label-value
-                name: my-custom-label-7jkcx-tq8km
-            spec:
-              containers:
-              - name: jnlp
-                image: jenkins/inbound-agent:latest
-                command: ["/bin/bash"]
-                args: ["-s"]
-              - name: docker
-                image: docker:latest
-                volumeMounts:
-                - name: docker-sock
-                  mountPath: /var/run/docker.sock
-              volumes:
-              - name: docker-sock
-                hostPath:
-                  path: /var/jenkins_home/docker.sock
-            '''
-        }
-    }
 
     stages {
         stage('Build and Push Docker Image') {
