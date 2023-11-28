@@ -40,6 +40,6 @@ steps {
         sh "pwd"
     } //container
   } //steps
-} /
+} 
    
 }
