@@ -31,7 +31,6 @@ spec:
     }
     
     stages {
-        agent: any
         stage('Build and Push Docker Image') {
             steps {
                 script {
