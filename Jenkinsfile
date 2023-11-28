@@ -30,20 +30,5 @@ spec:
         }
     }
     
-    stages {
-        stage('Build and Push Docker Image') {
-            steps {
-                script {
-                    // Define the image name and tag
-                    def imageName = "elonetworkcontainerregistry.azurecr.io/hello-world-example"
-                    def imageTag = "latest"
-
-                    // Build the Docker image
-                    sh "ls "
-
-                    
-                }
-            }
-        }
-    }
+  
 }
