@@ -16,9 +16,6 @@ spec:
   containers:
   - name: kaniko-demo
     image: gcr.io/kaniko-project/executor:debug
-    args: ["--context=git://github.com/agavitalis/kaniko-kubernetes.git",
-            "--destination=docker.io/saijiro784/test:1.0.2",
-            "--dockerfile=dockerfile"]
     command:
     - /busybox/cat
     tty: true
@@ -38,8 +35,12 @@ spec:
     }
 steps {
       script {
-        sh "pwd"
-    } 
+                    sh '''
+                        /kaniko/executor \
+                        --dockerfile `pwd`/Dockerfile \
+                        --context git://github.com/agavitalis/kaniko-kubernetes.git \
+                        --destination docker.io/saijiro784/test:1.0.2
+                    '''    } 
   }
 } 
     }
