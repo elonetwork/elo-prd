@@ -82,7 +82,7 @@ data "terraform_remote_state" "hub-infra" {
    backend = "azurerm"
     config = {
         key = "infrastructure/terraform.tfstate"
-        resource_group_name = "1-5b8fc781-playground-sandbox"
+        resource_group_name = "1-edbb0a66-playground-sandbox"
         storage_account_name = "vsstorage4terraform"
         container_name = "hubcontainer"
     }

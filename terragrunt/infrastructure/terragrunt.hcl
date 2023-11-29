@@ -18,7 +18,7 @@ inputs = {
   acr_name = "acrelo32"
   acr_sku = "Premium"
   acr_admin_enabled = false
-  key_vault_name = "kvprd52323"
+  key_vault_name = "kvprd51321"
 
   key_vault_enable_for_disk_encryption = true
   key_vault_soft_delete_retention_days = 7

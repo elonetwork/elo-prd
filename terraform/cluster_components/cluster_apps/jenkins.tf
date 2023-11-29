@@ -17,4 +17,6 @@ resource "helm_release" "example" {
   values = [
     "${file("jenkins-values.tpl.yaml")}"
   ]
+  cleanup_on_fail = true
+
 }
