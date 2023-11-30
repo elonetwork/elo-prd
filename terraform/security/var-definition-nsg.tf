@@ -12,3 +12,11 @@ variable "resource_group_name" {
 variable "location" {
   
 }
+
+variable "sub_aks_agents_id" {
+  
+}
+
+variable "nsg_sub_aks_agents_name" {
+  
+}

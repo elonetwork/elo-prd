@@ -5,3 +5,12 @@ module "nsg_sub_aks_prod" {
   nsg_location        = var.location
   resource_group_name = var.resource_group_name
 }
+
+module "nsg_sub_aks_agents" {
+  source              = "../modules/nsg/"
+  subnet_id           = var.sub_aks_agents_id
+  name                = var.nsg_sub_aks_agents_name
+  nsg_location        = var.location
+  resource_group_name = var.resource_group_name
+}
+

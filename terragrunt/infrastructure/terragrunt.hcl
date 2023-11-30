@@ -13,6 +13,11 @@ inputs = {
   sub_aks_prod_address_name =  "sub-aks-prod"
   sub_appgtw_prd_address_prefixes = "10.102.128.0/17"
   sub_appgtw_prd_name = "sub_appgtw_prd"
+  sub_aks_agents_address_prefixes =  "10.102.64.0/18"
+  sub_aks_agents_name =  "sub-aks-agents"
+
+  username = "saijiro"
+  password = "Password@123"
 
   acr_name  =  "elonetworkcontainerRegistry"
   acr_sku = "Standard"
