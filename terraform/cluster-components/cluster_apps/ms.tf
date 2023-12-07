@@ -8,6 +8,6 @@ resource "helm_release" "auth" {
 resource "helm_release" "test" {
   chart   = "/home/saijiro/elo-helm/test"
   name    = "test"
-  version = "1"
+  version = "2"
   cleanup_on_fail = true
 }
