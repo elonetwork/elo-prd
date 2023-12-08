@@ -1,3 +1,10 @@
+resource "helm_release" "postgres" {
+  chart   = "/home/saijiro/elo-helm/postgres"
+  name    = "postgres"
+  version = "1"
+  cleanup_on_fail = true
+}
+
 resource "helm_release" "auth" {
   chart   = "/home/saijiro/elo-helm/auth"
   name    = "auth"
